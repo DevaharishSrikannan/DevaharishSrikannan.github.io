@@ -2,6 +2,26 @@
 const GH = "https://github.com/DevaharishSrikannan/";
 const projects = [
   {
+    title: "Who Pays for Health Care? Financing in 195 Countries",
+    cat: ["analysis"],
+    desc: "SQL pipeline (CTEs, pivots, window functions) over WHO health expenditure, World Bank population and life expectancy data, 2000 to 2023, with bootstrap confidence intervals, a spending and life expectancy curve, financing-profile clustering and an Ireland versus EU27 comparison.",
+    result: "Out-of-pocket share falls as compulsory financing rises (Spearman rho -0.84 across 191 countries). Spending per person was a median 10.5% higher in 2021 than 2019 (95% CI 7.6 to 13.0). Ireland sits close to the spending and life expectancy curve.",
+    tags: ["Python", "SQL (SQLite)", "pandas", "SciPy", "scikit-learn", "Matplotlib"],
+    status: "Complete. Interactive dashboard included.",
+    link: GH + "global-health-financing",
+    demo: "health-financing/"
+  },
+  {
+    title: "Hospital and Pharmacy Access in 11,000 Urban Centres",
+    cat: ["analysis"],
+    desc: "Compares recorded hospitals and pharmacies per person across World Bank income groups using Kruskal-Wallis with effect sizes, logistic regression with bootstrap intervals, Gini and Lorenz curves and a between-country variance split. Treats missing facility records as a data-quality question, not as zeros.",
+    result: "A hospital is recorded in 88% of high-income centres but 36% of low-income ones (adjusted odds ratio 14.9). Among centres with one, rates rise modestly with income (median 4.8 vs 2.4 per 100,000). Hospital and pharmacy rates are only loosely related (rho 0.33).",
+    tags: ["Python", "SQL (SQLite)", "SciPy", "scikit-learn", "Matplotlib", "JavaScript"],
+    status: "Complete. Interactive dashboard included.",
+    link: GH + "urban-health-access",
+    demo: "urban-health-access/"
+  },
+  {
     title: "Brain Tumour MRI Classification and Dataset Audit",
     cat: ["imaging", "ml"],
     desc: "Classical feature pipeline (Gabor, LBP, HOG, wavelet energy) with SVM, Random Forest and Logistic Regression on 3,264 brain MRIs, plus an audit of the public train/test split.",
@@ -59,6 +79,7 @@ function renderProjects(f) {
     el.appendChild(tg);
     const st = document.createElement("span"); st.className = "status"; st.textContent = p.status; el.appendChild(st);
     if (p.link) { const a = document.createElement("a"); a.className = "code"; a.href = p.link; a.textContent = "View code and write-up on GitHub"; a.target = "_blank"; a.rel = "noopener"; el.appendChild(a); }
+    if (p.demo) { const a = document.createElement("a"); a.className = "code"; a.href = p.demo; a.textContent = "Open interactive dashboard"; a.style.marginLeft = "14px"; el.appendChild(a); }
     grid.appendChild(el);
   });
 }
