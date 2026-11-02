@@ -25,13 +25,6 @@ const projects = [
     desc: "End-to-end pipeline covering signal preprocessing, feature extraction, model training and comparison of deep learning and ensemble models.",
     tags: ["Python", "TensorFlow", "Scikit-learn"],
     status: "MSc project"
-  },
-  {
-    title: "RAG with Hallucination-Aware Evaluation",
-    cat: "genai",
-    desc: "Retrieval-augmented generation pipeline using embeddings and semantic search, with checks that score LLM answers against retrieved sources.",
-    tags: ["Python", "Hugging Face", "LangChain", "RAG"],
-    status: "In progress"
   }
 ];
 
