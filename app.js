@@ -3,7 +3,7 @@ const GH = "https://github.com/DevaharishSrikannan/";
 const projects = [
   {
     title: "Brain Tumour MRI Classification and Dataset Audit",
-    cat: "imaging",
+    cat: ["imaging", "ml"],
     desc: "Classical feature pipeline (Gabor, LBP, HOG, wavelet energy) with SVM, Random Forest and Logistic Regression on 3,264 brain MRIs, plus an audit of the public train/test split.",
     result: "89% grouped cross-validated accuracy, but only 40% on test images with no near-duplicate in training (majority baseline 59%): 66% of the official test set has a twin in the training set.",
     tags: ["Python", "scikit-learn", "scikit-image", "OpenCV"],
@@ -12,12 +12,20 @@ const projects = [
   },
   {
     title: "Stomach Adenocarcinoma: Survival and Recurrence",
-    cat: "ml",
+    cat: ["analysis", "ml"],
     desc: "Patient-level analysis of the TCGA-STAD cohort: Kaplan-Meier, multivariable Cox model and cross-validated recurrence prediction. Survival routines written from scratch and verified on simulated data.",
     result: "Stage IV hazard ratio 5.2; higher tumour mutation count associated with longer survival (HR 0.89 per doubling); recurrence was not predictable from clinical and genomic summaries (AUC about 0.5).",
     tags: ["Python", "Survival analysis", "Cox regression", "TCGA"],
     status: "Complete. Gene-level layers planned.",
     link: GH + "stomach-adenocarcinoma-survival"
+  },
+  {
+    title: "Gene Expression Analysis in ERBB2-Amplified Breast Cancer",
+    cat: ["analysis"],
+    desc: "Differential expression, pathway enrichment and survival analysis of ERBB2-amplified versus non-amplified breast tumours, using TCGA RNA-seq, copy-number and clinical data. Written in R.",
+    tags: ["R", "DESeq2", "clusterProfiler", "glmnet", "survminer"],
+    status: "Complete",
+    link: GH + "Gene-Expression-Analysis-and-Interpretation"
   },
   {
     title: "Audio Genre Classification",
@@ -40,7 +48,7 @@ const skills = {
 const grid = document.getElementById("grid");
 function renderProjects(f) {
   grid.innerHTML = "";
-  projects.filter(p => f === "all" || p.cat === f).forEach(p => {
+  projects.filter(p => f === "all" || [].concat(p.cat).includes(f)).forEach(p => {
     const el = document.createElement("article");
     el.className = "card";
     const h = document.createElement("h3"); h.textContent = p.title; el.appendChild(h);
