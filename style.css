@@ -54,7 +54,8 @@ section:last-child{border-bottom:0}
 .hero-text{display:grid;gap:18px;min-width:0}
 .eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700}
-.lead{font-size:1.2rem;max-width:34em}
+.lead{font-size:1.17rem;max-width:36em}
+.lead2{max-width:38em;color:var(--ink);opacity:.86}
 .hero .sub{color:var(--muted)}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 .btn{font-family:var(--display);font-size:.98rem;font-weight:500;padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;cursor:pointer;transition:transform .15s,border-color .15s}
