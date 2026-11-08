@@ -15,13 +15,13 @@
 <meta name="description" content="Health data science, machine learning and medical AI projects by Devaharish Srikannan, with code on GitHub and interactive dashboards.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="style.css?v=20261108">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css?v=20261108b">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav">
-  <a class="brand" href="#top" aria-label="Back to top">Devaharish<span>.</span></a>
+  <a class="brand" href="#top" aria-label="Back to top"><span class="mono">DS</span> Devaharish Srikannan</a>
   <nav aria-label="Sections">
     <a href="#glance">At a glance</a>
     <a href="#journey">Journey</a>
@@ -34,32 +34,31 @@
 
 <main id="main">
   <section class="hero" id="top">
-    <div class="hero-text">
-      <p class="eyebrow">Dublin, Ireland</p>
-      <h1>Devaharish Srikannan</h1>
-      <p class="lead">Data and AI researcher working at the intersection of health data science, machine learning and medical imaging. My experience spans data science research with UCD's SPHERE Research Group, research placements in Ireland and India, and high-accuracy Trust and Safety operations at Accenture UK &amp; Ireland.</p>
-      <p class="lead2">I hold an MSc in Artificial Intelligence for Medicine and Medical Research from University College Dublin (2H1) and have four publications on AI in healthcare. I focus on methods that hold up: validated data, honest evaluation and results reported with their limitations.</p>
-      <p class="sub">Open to data and AI roles, research positions and PhD opportunities.</p>
-      <div class="cta">
-        <a class="btn primary" href="#projects">See my work</a>
-        <a class="btn" href="#contact">Get in touch</a>
-      </div>
+    <p class="eyebrow">Data &amp; AI Researcher · Dublin, Ireland</p>
+    <h1>Devaharish Srikannan</h1>
+    <p class="lead">I work at the intersection of health data science, machine learning and medical imaging, with experience across data science research at UCD's SPHERE Research Group, research placements in Ireland and India, and high-accuracy Trust and Safety operations at Accenture UK &amp; Ireland.</p>
+    <p class="lead2">I hold an MSc in Artificial Intelligence for Medicine and Medical Research from University College Dublin (2H1) and have four publications on AI in healthcare. I focus on methods that hold up: validated data, honest evaluation and results reported with their limitations.</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects">View my work</a>
+      <a class="btn" href="#contact">Get in touch</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
-    <figure class="hero-plot" aria-label="Illustrative survival curve, the kind of analysis in my TCGA project">
-      <canvas id="curve" width="520" height="360"></canvas>
-      <figcaption>Kaplan–Meier style survival curve, drawn live. <span>Illustrative</span></figcaption>
-    </figure>
+    <dl class="facts">
+      <div><dt>Open to</dt><dd>Data and AI roles, research positions, PhD opportunities</dd></div>
+      <div><dt>Focus</dt><dd>Health data science, machine learning, medical AI</dd></div>
+      <div><dt>Work status</dt><dd>Stamp 1G, eligible to work in Ireland</dd></div>
+    </dl>
   </section>
 
   <section id="glance" class="glance">
     <div class="sec-head">
       <h2>At a glance</h2>
-      <p>Tap a tile to see the details.</p>
+      <p>Select a card to see the details.</p>
     </div>
     <div class="tiles" role="tablist" aria-label="Highlights">
       <button class="tile" role="tab" data-k="degrees" aria-selected="true"><b>2</b><span>Degrees</span><small>MSc UCD · BTech</small></button>
-      <button class="tile" role="tab" data-k="research"><b>4</b><span>Research placements</span><small>Ireland and India</small></button>
-      <button class="tile" role="tab" data-k="corporate"><b>1</b><span>Corporate role</span><small>Accenture UK &amp; Ireland</small></button>
+      <button class="tile" role="tab" data-k="research"><b>4</b><span>Research roles</span><small>Ireland and India</small></button>
+      <button class="tile" role="tab" data-k="corporate"><b>1</b><span>Industry role</span><small>Accenture UK &amp; Ireland</small></button>
       <button class="tile" role="tab" data-k="pubs"><b>4</b><span>Publications</span><small>2022 to 2026</small></button>
       <button class="tile" role="tab" data-k="awards"><b>4</b><span>Awards</span><small>Research and industry</small></button>
       <button class="tile" role="tab" data-k="certs"><b>7</b><span>Certifications</span><small>AI, data and cloud</small></button>
@@ -67,9 +66,10 @@
     <div id="panel" class="panel" role="tabpanel" aria-live="polite"></div>
   </section>
 
-  <section id="journey">
-    <div class="sec-head">
+  <section id="journey" class="split">
+    <div class="sec-head side">
       <h2>Journey</h2>
+      <p>Industry, research, education and leadership, newest first.</p>
       <div class="filters" role="group" aria-label="Filter journey">
         <button class="chip on" data-j="all">Everything</button>
         <button class="chip" data-j="industry">Industry</button>
@@ -99,8 +99,8 @@
     <div class="skills" id="skillGrid"></div>
   </section>
 
-  <section id="publications">
-    <div class="sec-head"><h2>Publications</h2></div>
+  <section id="publications" class="split">
+    <div class="sec-head side"><h2>Publications</h2><p>Peer-reviewed articles and a book chapter on AI in healthcare and biomedical technology.</p></div>
     <ol class="pubs">
       <li><span class="yr">2026</span><div><a href="https://doi.org/10.18502/fbt.v13i3.22756" target="_blank" rel="noopener">Injectable Hydrogels for Biomedical Applications: A Review of the Current Clinical Landscape</a><small>Biomedical Technologies (FBT), Vol 13 No 3</small></div></li>
       <li><span class="yr">2024</span><div><b>Integrated Diagnosis, Treatment and Prognosis in Healthcare using Artificial Intelligence</b><small>Indian Journal for Artificial Intelligence and Neural Networking, Vol 4 Issue 3, pp. 1–5</small></div></li>
@@ -122,6 +122,6 @@
 </main>
 
 <footer><p>© <span id="yr"></span> Devaharish Srikannan · Dublin, Ireland</p></footer>
-<script src="app.js?v=20261108"></script>
+<script src="app.js?v=20261108b"></script>
 </body>
 </html>

@@ -124,7 +124,7 @@ const grid = document.getElementById("grid");
 function renderProjects(f) {
   grid.innerHTML = "";
   projects.filter(p => f === "all" || p.cat.includes(f)).forEach(p => {
-    const c = el("article", "card");
+    const c = el("article", p.demo && f === "all" ? "card wide" : "card");
     c.append(el("span", "cat", p.cat.map(x => catLabel[x]).join(" · ")), el("h3", null, p.title), el("p", null, p.desc));
     if (p.result) { const d = el("details"); d.append(el("summary", null, "What I found"), el("p", null, p.result)); c.appendChild(d); }
     const tg = el("div", "tags"); p.tags.forEach(t => tg.appendChild(el("span", null, t))); c.appendChild(tg);
