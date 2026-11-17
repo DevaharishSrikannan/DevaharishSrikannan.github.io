@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Knee Osteoarthritis Grading</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Kellgren-Lawrence grade 0 to 4 with PyTorch">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Knee Osteoarthritis Grading">
+<meta property="og:description" content="Kellgren-Lawrence grade 0 to 4 with PyTorch">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/knee-oa.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / Knee Osteoarthritis Grading</span>
+  <div class="row"><span class="chip">PyTorch</span><span class="chip">Ordinal metrics</span><span class="chip">Radiomics</span></div>
+  <h1>Knee Osteoarthritis Grading</h1>
+  <p class="lead">Kellgren-Lawrence grade 0 to 4 with PyTorch. Fine-tunes ResNet-50 and tests whether GLCM texture features add anything on top of CNN embeddings.</p>
+  <div class="row"><a class="btn" href="https://github.com/DevaharishSrikannan/knee-osteoarthritis-kl-pytorch">Code on GitHub <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi "><b>KL 0 to 4</b><span>ordinal grade</span></div><div class="kpi "><b>QWK</b><span>quadratic weighted kappa</span></div><div class="kpi "><b>3 models</b><span>CNN, texture, fused</span></div><div class="kpi "><b>Pending</b><span>GPU training run</span></div></div>
+</section>
+
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">Question</span><h2>Do texture features add anything to a CNN?</h2><p>Fine-tunes ResNet-50 to grade knee X-rays on the Kellgren-Lawrence scale, then compares logistic regression on GLCM texture features, on CNN embeddings and on both fused, on the same split.</p><ul><li>Audits the dataset's own splits for near-duplicate images with a 64-bit average hash.</li><li>Model selection on validation quadratic weighted kappa, the standard metric for ordered grades.</li><li>Reports within-one-grade accuracy, the full confusion matrix and bootstrap intervals.</li></ul></div><div class="prose reveal"><span class="eyebrow">Status</span><h2>Code complete, training pending</h2><p>11 unit tests cover parsing, the duplicate audit, texture features and metrics. Middle grades (1 and 2) are hard even for experts, so I expect the confusion to sit there.</p><p><a href="https://colab.research.google.com/github/DevaharishSrikannan/knee-osteoarthritis-kl-pytorch/blob/main/notebooks/knee_oa_kl_pytorch.ipynb">Open the notebook in Colab →</a></p></div></div></section>
+
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn" href="https://github.com/DevaharishSrikannan/knee-osteoarthritis-kl-pytorch">Code on GitHub <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+
+</body>
+</html>

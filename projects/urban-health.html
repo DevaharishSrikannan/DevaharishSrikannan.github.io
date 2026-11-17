@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Urban Health Access</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Hospitals and pharmacies across 11,000 urban centres">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Urban Health Access">
+<meta property="og:description" content="Hospitals and pharmacies across 11,000 urban centres">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/urban-health.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/assets/img/urban-recorded.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / Urban Health Access</span>
+  <div class="row"><span class="chip live">Live demo</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Statistics</span><span class="chip">Dashboard</span></div>
+  <h1>Urban Health Access</h1>
+  <p class="lead">Hospitals and pharmacies across 11,000 urban centres. SQL preparation, nonparametric tests with effect sizes, logistic regression with bootstrap intervals and an interactive dashboard.</p>
+  <div class="row"><a class="btn primary" href="../urban-health-access/">Open full dashboard <span class="arr">→</span></a><a class="btn" href="https://github.com/DevaharishSrikannan/urban-health-access">Code on GitHub <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi "><b>11,000+</b><span>urban centres analysed</span></div><div class="kpi bad"><b>88% vs 36%</b><span>hospital recorded, high vs low income</span></div><div class="kpi "><b>14.9x</b><span>adjusted odds, high vs low income</span></div><div class="kpi "><b>0.33</b><span>hospital vs pharmacy correlation</span></div></div>
+</section>
+
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">Question</span><h2>Who has recorded hospitals and pharmacies?</h2><p>Which urban centres have recorded hospitals and pharmacies, how many per person, and how unevenly are they spread across income groups?</p><ul><li>A blank means no facility was recorded, not that none exists. Recording is far more complete in richer countries.</li><li>Among centres with a recorded hospital, rates rise with income: median 2.4 to 4.8 per 100,000.</li><li>Pharmacies show a steeper gradient than hospitals.</li><li>Dublin has 9.3 recorded hospitals and 15.5 pharmacies per 100,000.</li></ul></div><div class="prose reveal"><span class="eyebrow">Live dashboard</span><h2>Look up any city</h2><p>The full interactive dashboard lets you compare income groups and look up every urban centre in the dataset. It runs as a single self-contained page.</p><p class="row"><a class="btn primary" href="../urban-health-access/">Open the dashboard →</a><a class="btn" href="bi-dashboard.html">BI version →</a><a class="btn" href="sql-playground.html">Query it in SQL →</a></p><p class="muted">Methods: SQL with window functions, Kruskal-Wallis with epsilon squared, Mann-Whitney with Holm correction and Cliff's delta, logistic regression with bootstrap intervals, Gini and Lorenz curves, ICC.</p></div></div></section>
+<section class="block" style="padding-top:0"><div class="wrap"><div class="head"><span class="eyebrow">Figures</span><h2>From the analysis</h2><p>Select a figure to enlarge it.</p></div><div class="gallery"><figure><img src="../assets/img/urban-recorded.jpg" alt="Share of centres with a recorded facility, by income group" loading="lazy"><figcaption>Share of centres with a recorded facility, by income group</figcaption></figure><figure><img src="../assets/img/urban-levels.jpg" alt="Facilities per person by income group" loading="lazy"><figcaption>Facilities per person by income group</figcaption></figure><figure><img src="../assets/img/urban-lorenz.jpg" alt="Lorenz curve of recorded hospitals" loading="lazy"><figcaption>Lorenz curve of recorded hospitals</figcaption></figure><figure><img src="../assets/img/urban-scatter.jpg" alt="Hospitals vs pharmacies per person" loading="lazy"><figcaption>Hospitals vs pharmacies per person</figcaption></figure></div></div></section>
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn primary" href="../urban-health-access/">Open full dashboard <span class="arr">→</span></a><a class="btn" href="https://github.com/DevaharishSrikannan/urban-health-access">Code on GitHub <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+
+</body>
+</html>

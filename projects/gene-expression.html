@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ERBB2 Breast Cancer Expression</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Differential expression, pathways and survival in TCGA">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ERBB2 Breast Cancer Expression">
+<meta property="og:description" content="Differential expression, pathways and survival in TCGA">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/gene-expression.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / ERBB2 Breast Cancer Expression</span>
+  <div class="row"><span class="chip">R</span><span class="chip">DESeq2</span><span class="chip">clusterProfiler</span><span class="chip">glmnet</span></div>
+  <h1>ERBB2 Breast Cancer Expression</h1>
+  <p class="lead">Differential expression, pathways and survival in TCGA. Compares ERBB2-amplified with non-amplified breast tumours using RNA-seq, copy-number and clinical data.</p>
+  <div class="row"><a class="btn" href="https://github.com/DevaharishSrikannan/Gene-Expression-Analysis-and-Interpretation">Code on GitHub <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi "><b>TCGA</b><span>breast cancer PanCancer Atlas</span></div><div class="kpi "><b>ERBB2</b><span>amplified vs not amplified</span></div><div class="kpi "><b>DESeq2</b><span>differential expression</span></div><div class="kpi "><b>glmnet</b><span>penalised Cox survival</span></div></div>
+</section>
+
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">Question</span><h2>How do ERBB2-amplified tumours differ?</h2><p>RNA-seq, copy-number and clinical data from cBioPortal are matched by patient, and tumours are grouped by ERBB2 amplification status from the copy-number data.</p><ul><li>DESeq2 normalisation and differential expression with multiple-testing correction.</li><li>Pathway enrichment with GO, KEGG and Reactome through clusterProfiler.</li><li>Variance-stabilised expression for PCA and heatmaps.</li><li>A regularised Cox model with glmnet linking expression to survival.</li></ul></div><div class="prose reveal"><span class="eyebrow">Tools</span><h2>Written in R</h2><p>DESeq2, clusterProfiler, glmnet, survival and survminer, with preprocessing and modelling kept in separate scripts.</p></div></div></section>
+
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn" href="https://github.com/DevaharishSrikannan/Gene-Expression-Analysis-and-Interpretation">Code on GitHub <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+
+</body>
+</html>

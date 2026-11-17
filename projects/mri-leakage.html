@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brain MRI Leakage Audit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Why 89% accuracy fell to 40% on truly unseen scans">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Brain MRI Leakage Audit">
+<meta property="og:description" content="Why 89% accuracy fell to 40% on truly unseen scans">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/mri-leakage.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/assets/img/mri-leakage.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / Brain MRI Leakage Audit</span>
+  <div class="row"><span class="chip live">Live demo</span><span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">OpenCV</span><span class="chip">Data leakage</span></div>
+  <h1>Brain MRI Leakage Audit</h1>
+  <p class="lead">Why 89% accuracy fell to 40% on truly unseen scans. Classical features with SVM, Random Forest and Logistic Regression on 3,264 MRIs, plus an audit of the public train/test split.</p>
+  <div class="row"><a class="btn" href="https://github.com/DevaharishSrikannan/brain-tumor-mri-classification">Code on GitHub <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi good"><b>89%</b><span>grouped cross-validation accuracy</span></div><div class="kpi "><b>79%</b><span>official test split</span></div><div class="kpi bad"><b>40%</b><span>test images with no twin in training</span></div><div class="kpi bad"><b>66%</b><span>of test images had a twin in training</span></div></div>
+</section>
+<section class="block" style="padding-top:16px"><div class="wrap" style="display:grid;gap:22px">
+<div class="console" id="leak-demo">
+  <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span>leakage_simulator · 394 official test images, SVM</span><span class="chip live">Interactive</span></div>
+  <div class="inner">
+    <p class="muted">Each square is one test image. Red squares have a near-identical copy in the training set, which the model has effectively already seen. Drag the slider to see how the share of leaked images inflates the accuracy you would report.</p>
+    <div class="controls"><div class="control"><label for="lk-p">Test images with a twin in training <output id="lk-p-o"></output></label><input id="lk-p" type="range" min="0" max="100" step="0.1" value="65.7"></div>
+      <div class="control"><span class="lbl">Presets</span><div class="seg"><button data-preset="0">Clean only</button><button data-preset="65.7">Official split</button><button data-preset="100">All leaked</button></div></div></div>
+    <div class="readout"><div><b id="lk-acc" style="color:var(--amber)">-</b><span>Accuracy you would report</span></div><div><b id="lk-leak" style="color:var(--rose)">-</b><span>Leaked test images</span></div><div><b id="lk-clean" style="color:var(--scan)">-</b><span>Truly unseen test images</span></div></div>
+    <div class="lgrid" id="lk-grid" aria-hidden="true"></div>
+    <div class="legend"><span class="lk">Has a twin in training</span><span>Truly unseen</span></div>
+    <div class="chartbox" id="lk-chart"></div>
+    <p class="note">Uses the measured accuracies: 40% on the 135 clean images and 257 of 259 correct on leaked ones. The line shows what any mix of the two would report.</p>
+  </div></div>
+
+<div class="console" id="dup-demo">
+  <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span>near_duplicate_check · the audit's own rule, running in your browser</span><span class="chip live">Try it</span></div>
+  <div class="inner">
+    <p class="muted">The audit shrinks each image to 32 × 32 grayscale and flags two images as twins when their pixel correlation is at least 0.995. Drop in two images, or load an example. Nothing is uploaded anywhere.</p>
+    <div class="row"><button class="btn" data-ex="twin">Example: re-saved copy</button><button class="btn" data-ex="different">Example: different scan</button></div>
+    <div class="pair">
+      <div class="drop" tabindex="0" role="button" aria-label="Choose image A"><input type="file" accept="image/*" hidden><span class="dd-hint">Image A: drop or select</span><canvas class="dd-prev" hidden></canvas></div>
+      <div class="drop" tabindex="0" role="button" aria-label="Choose image B"><input type="file" accept="image/*" hidden><span class="dd-hint">Image B: drop or select</span><canvas class="dd-prev" hidden></canvas></div>
+    </div>
+    <div class="controls"><div class="control"><label for="dd-thr">Twin threshold <output id="dd-thr-o"></output></label><input id="dd-thr" type="range" min="0.95" max="0.999" step="0.001" value="0.995"></div>
+      <div class="readout"><div><b id="dd-r">-</b><span>Pixel correlation</span></div></div></div>
+    <div class="verdict" id="dd-verdict">Load two images to compare them.</div>
+  </div></div>
+</div></section>
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">Question</span><h2>Is 89% accuracy real?</h2><p>A classical pipeline (HOG, LBP, Gabor, wavelet and edge features into an SVM) reached 89% in grouped cross-validation on 3,264 brain MRIs. Before trusting it, I audited the dataset's official train/test split.</p><ul><li>259 of 394 test images (66%) have a near-identical copy in training.</li><li>On the 135 test images without one, accuracy drops to 40% (95% CI 32 to 48%), below the 59% you get by always predicting glioma.</li><li>Geometric augmentation did not help these orientation-sensitive features.</li></ul></div><div class="prose reveal"><span class="eyebrow">Why it matters</span><h2>Leakage makes weak models look strong</h2><p>Many published results on this dataset use the official split. The audit shows how much of that performance comes from memorised near-copies rather than learning. Without patient IDs, even grouped cross-validation stays optimistic, so the 40% figure is the more realistic signal.</p><p>The fix is a patient-level or near-duplicate-aware split, which is what my pneumonia and knee projects build in from the start.</p></div></div></section>
+<section class="block" style="padding-top:0"><div class="wrap"><div class="head"><span class="eyebrow">Figures</span><h2>From the analysis</h2><p>Select a figure to enlarge it.</p></div><div class="gallery"><figure><img src="../assets/img/mri-leakage.jpg" alt="Leakage audit: accuracy on all test images vs leak-free subset" loading="lazy"><figcaption>Leakage audit: accuracy on all test images vs leak-free subset</figcaption></figure><figure><img src="../assets/img/mri-cv.jpg" alt="Grouped cross-validation accuracy by model and augmentation" loading="lazy"><figcaption>Grouped cross-validation accuracy by model and augmentation</figcaption></figure><figure><img src="../assets/img/mri-confusion.jpg" alt="SVM confusion matrix" loading="lazy"><figcaption>SVM confusion matrix</figcaption></figure><figure><img src="../assets/img/mri-filters.jpg" alt="Augmentation and feature filters" loading="lazy"><figcaption>Augmentation and feature filters</figcaption></figure></div></div></section>
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn" href="https://github.com/DevaharishSrikannan/brain-tumor-mri-classification">Code on GitHub <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/demos.js"></script>
+</body>
+</html>
