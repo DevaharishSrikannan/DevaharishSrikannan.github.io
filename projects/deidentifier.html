@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clinical Text De-identifier</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Finding and masking personal data in clinical notes">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Clinical Text De-identifier">
+<meta property="og:description" content="Finding and masking personal data in clinical notes">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/deidentifier.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / Clinical Text De-identifier</span>
+  <div class="row"><span class="chip live">Live demo</span><span class="chip">NLP</span><span class="chip">Regex</span><span class="chip">GDPR</span><span class="chip">Privacy</span></div>
+  <h1>Clinical Text De-identifier</h1>
+  <p class="lead">Finding and masking personal data in clinical notes. A rule and dictionary NLP pipeline for names, dates, Irish PPSN and Eircodes, phones and emails, with tag, surrogate and highlight modes.</p>
+  <div class="row"><a class="btn" href="https://github.com/DevaharishSrikannan/DevaharishSrikannan.github.io/blob/main/assets/js/labs/deid.js">View the source <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi "><b>7</b><span>identifier types</span></div><div class="kpi "><b>4</b><span>labelled sample notes</span></div><div class="kpi "><b>3</b><span>output modes</span></div><div class="kpi good"><b>0</b><span>data leaves your browser</span></div></div>
+</section>
+<section class="block" style="padding-top:16px"><div class="wrap"><div class="console" id="deid-lab" ><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span>deidentifier · rule and dictionary NLP pipeline</span><span class="chip live">Paste text</span></div><div class="inner">
+    <div class="controls">
+      <div class="control"><label for="de-note">Sample note</label><select id="de-note"></select></div>
+      <div class="control"><span class="lbl">Output</span><div class="seg"><button data-mode="tag" aria-pressed="true">Tags</button><button data-mode="surrogate" aria-pressed="false">Surrogates</button><button data-mode="highlight" aria-pressed="false">Highlight</button></div></div>
+    </div>
+    <div class="checks"><label><input type="checkbox" data-cat="NAME" checked> Names</label><label><input type="checkbox" data-cat="DATE" checked> Dates</label><label><input type="checkbox" data-cat="ID" checked> MRN and PPSN</label><label><input type="checkbox" data-cat="PHONE" checked> Phones</label><label><input type="checkbox" data-cat="EMAIL" checked> Emails</label><label><input type="checkbox" data-cat="ADDRESS" checked> Addresses and Eircodes</label><label><input type="checkbox" data-cat="ORG" checked> Hospitals</label></div>
+    <div class="two"><div style="display:grid;gap:8px"><label for="de-in" class="lbl mono muted" style="font-size:.78rem">INPUT (edit freely)</label><textarea id="de-in" class="editor" style="min-height:220px"></textarea></div>
+    <div style="display:grid;gap:8px"><span class="lbl mono muted" style="font-size:.78rem">DE-IDENTIFIED OUTPUT</span><div id="de-out" class="textout" aria-live="polite"></div></div></div>
+    <div class="readout"><div><b id="de-found" style="color:var(--scan)">-</b><span>Identifiers found</span></div><div><b id="de-rec" style="color:var(--mint)">-</b><span>Recall on this note</span></div><div><b id="de-prec" style="color:var(--amber)">-</b><span>Precision on this note</span></div></div>
+    <p class="muted" style="font-size:.9rem"><b style="color:var(--text)">Missed:</b> <span id="de-miss"></span></p>
+    <p class="note">All notes are fictional. A rule-based pipeline is transparent but brittle: the "Tricky cases" note shows names and dates it misses, which is why real de-identification adds trained models and human review.</p></div></div></div></section>
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">Question</span><h2>Can you share clinical notes safely?</h2><p>Research and analytics teams need clinical text, but notes are full of names, dates, IDs and addresses. Under GDPR they must be removed or replaced before sharing.</p><ul><li>Regular expressions for structured identifiers: Irish PPSN numbers, Eircodes, MRNs, phone numbers, emails and dates.</li><li>Context cues (titles like Dr or Mr) and a first-name dictionary for people.</li><li>Surrogate mode replaces each identifier with a consistent fake value, so the text stays readable.</li></ul></div><div class="prose reveal"><span class="eyebrow">Honest evaluation</span><h2>Scored against labelled notes</h2><p>Each sample note has hand-labelled identifiers. The page reports recall and precision live and lists exactly what was missed. The fourth note is built to break the rules, so the limits are visible rather than hidden.</p><p class="muted">Skills: NLP, information extraction, regular expressions, privacy engineering, evaluation with precision and recall.</p></div></div></section>
+
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn" href="https://github.com/DevaharishSrikannan/DevaharishSrikannan.github.io/blob/main/assets/js/labs/deid.js">View the source <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/labs/deid.js"></script>
+</body>
+</html>
