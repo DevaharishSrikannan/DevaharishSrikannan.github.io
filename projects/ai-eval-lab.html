@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Answer Evaluation Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Rate chatbot answers against a rubric and measure your agreement">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI Answer Evaluation Lab">
+<meta property="og:description" content="Rate chatbot answers against a rubric and measure your agreement">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/ai-eval-lab.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / AI Answer Evaluation Lab</span>
+  <div class="row"><span class="chip live">Live demo</span><span class="chip">LLM evaluation</span><span class="chip">Annotation</span><span class="chip">Inter-rater agreement</span></div>
+  <h1>AI Answer Evaluation Lab</h1>
+  <p class="lead">Rate chatbot answers against a rubric and measure your agreement. Eight sample answers covering hallucinated sources, unsafe advice, over-refusal and broken code, scored on accuracy, safety and helpfulness.</p>
+  <div class="row"><a class="btn" href="https://github.com/DevaharishSrikannan/DevaharishSrikannan.github.io/blob/main/assets/js/labs/eval.js">View the source <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi "><b>8</b><span>sample answers</span></div><div class="kpi "><b>3</b><span>rubric criteria</span></div><div class="kpi bad"><b>6</b><span>failure types</span></div><div class="kpi "><b>κ</b><span>Cohen&#x27;s kappa, live</span></div></div>
+</section>
+<section class="block" style="padding-top:16px"><div class="wrap"><div class="console" id="eval-lab" ><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span>eval_lab · rubric-based evaluation of chatbot answers</span><span class="chip live">Rate them</span></div><div class="inner">
+    <div class="row" style="justify-content:space-between"><span class="mono muted" id="ev-n"></span><span class="row"><button class="btn" id="ev-prev">← Previous</button><button class="btn" id="ev-next">Next →</button><button class="btn" id="ev-reset">Start again</button></span></div>
+    <div class="qa"><div class="bubble user"><small>User</small><span id="ev-q"></span></div><div class="bubble bot"><small>Assistant</small><span id="ev-a"></span></div></div>
+    <div class="rate">
+      <div class="control"><span class="lbl">Accurate?</span><div class="seg"><button data-c="acc" data-v="1">Pass</button><button data-c="acc" data-v="0">Fail</button></div></div>
+      <div class="control"><span class="lbl">Safe?</span><div class="seg"><button data-c="safe" data-v="1">Pass</button><button data-c="safe" data-v="0">Fail</button></div></div>
+      <div class="control"><span class="lbl">Helpful?</span><div class="seg"><button data-c="help" data-v="1">Pass</button><button data-c="help" data-v="0">Fail</button></div></div>
+    </div>
+    <div class="verdict" id="ev-fb" hidden></div>
+    <div class="readout"><div><b id="ev-k" style="color:var(--amber)">-</b><span id="ev-k-lab">Rate an answer to start</span></div><div><b id="ev-k-acc">-</b><span>Kappa: accuracy</span></div><div><b id="ev-k-safe">-</b><span>Kappa: safety</span></div><div><b id="ev-k-help">-</b><span>Kappa: helpfulness</span></div><div><b id="ev-done">-</b><span>Answers rated</span></div></div>
+    <div class="row" id="ev-tags"></div>
+    <p class="note">The answers were written for this exercise to show common failure modes; none comes from a named product. Reference labels follow a written rubric.</p></div></div></div></section>
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">Question</span><h2>How do you know if an AI answer is good?</h2><p>Evaluation needs a rubric, independent raters and a way to measure whether the raters agree. If two raters cannot agree, the labels cannot be trusted to train or test a model.</p><ul><li>Rate each answer on accuracy, safety and helpfulness.</li><li>Your agreement with the reference labels is measured with Cohen's kappa, which corrects for agreement by chance.</li><li>Each answer reveals its failure type: hallucinated source, unsafe triage, over-refusal, broken code or a statistical misconception.</li></ul></div><div class="prose reveal"><span class="eyebrow">Where it comes from</span><h2>Human-in-the-loop review is my day job</h2><p>At Accenture I review content and AI outputs against detailed policies, where consistency between reviewers matters as much as individual accuracy. This lab shows the measurement side of that work.</p><p class="muted">Skills: LLM evaluation design, annotation guidelines, inter-rater reliability (Cohen's kappa), failure taxonomies, red-teaming awareness.</p></div></div></section>
+
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn" href="https://github.com/DevaharishSrikannan/DevaharishSrikannan.github.io/blob/main/assets/js/labs/eval.js">View the source <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/labs/eval.js"></script>
+</body>
+</html>
