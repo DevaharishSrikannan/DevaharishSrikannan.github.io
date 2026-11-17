@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fraud Ring Detector</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Finding coordinated account rings in a network of shared devices and cards">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fraud Ring Detector">
+<meta property="og:description" content="Finding coordinated account rings in a network of shared devices and cards">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/fraud-rings.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / Fraud Ring Detector</span>
+  <div class="row"><span class="chip live">Live demo</span><span class="chip">Graph analysis</span><span class="chip">Anomaly detection</span><span class="chip">Trust &amp; Safety</span></div>
+  <h1>Fraud Ring Detector</h1>
+  <p class="lead">Finding coordinated account rings in a network of shared devices and cards. Graph analytics on a synthetic account network with planted abuse rings and innocent families who share a device.</p>
+  <div class="row"><a class="btn" href="https://github.com/DevaharishSrikannan/DevaharishSrikannan.github.io/blob/main/assets/js/labs/fraud.js">View the source <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi "><b>~350</b><span>synthetic accounts</span></div><div class="kpi bad"><b>6</b><span>planted abuse rings</span></div><div class="kpi good"><b>14</b><span>innocent families sharing a device</span></div><div class="kpi "><b>5</b><span>risk signals per cluster</span></div></div>
+</section>
+<section class="block" style="padding-top:16px"><div class="wrap"><div class="console" id="fraud-lab" ><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span>ring_detector · graph analytics on a synthetic account network</span><span class="chip live">Interactive</span></div><div class="inner">
+    <p class="muted">Accounts are linked when they share a device (cyan), a payment card (amber) or an IP block (grey). The detector groups linked accounts and scores each group. Raise or lower the threshold, then select any account to see why it was or was not flagged.</p>
+    <div class="controls">
+      <div class="control"><label for="fr-thr">Flag threshold <output id="fr-thr-o"></output></label><input id="fr-thr" type="range" min="0.1" max="0.9" step="0.01" value="0.45"></div>
+      <div class="control"><span class="lbl">Data</span><button class="btn" id="fr-new">Generate a new network</button></div>
+    </div>
+    <div class="readout"><div><b id="fr-flag" style="color:var(--rose)">-</b><span>Accounts flagged</span></div><div><b id="fr-prec" style="color:var(--amber)">-</b><span>Precision (flagged that are real rings)</span></div><div><b id="fr-rec" style="color:var(--scan)">-</b><span>Recall (ring accounts caught)</span></div><div><b id="fr-fam" style="color:var(--mint)">-</b><span>Innocent family accounts flagged</span></div></div>
+    <canvas id="fr-canvas" class="graph" aria-label="Network graph of accounts; select a node to inspect it"></canvas>
+    <div id="fr-detail" class="tool"></div>
+    <p class="note">Synthetic data with known answers, so the detector can be scored honestly. Real investigations add many more signals and a human review step before any action.</p></div></div></div></section>
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">Question</span><h2>Can you tell a fraud ring from a family?</h2><p>Both share devices and addresses. What separates them is behaviour: rings sign up in bursts, reuse a few cards across many accounts, transact heavily and attract chargebacks. Families sign up over weeks and behave normally.</p><ul><li>Connected components find clusters of linked accounts.</li><li>Each cluster is scored on size, signup burst, card reuse, activity and chargebacks.</li><li>Precision and recall update live, so you can see the cost of a lower threshold: more rings caught, more families wrongly flagged.</li></ul></div><div class="prose reveal"><span class="eyebrow">Why I built it</span><h2>The same judgement as my Trust and Safety work</h2><p>In my day job I review high volumes of cases and look for patterns that suggest coordinated activity. This lab turns that judgement into an explicit, measurable method, with the trade-off between catching abuse and protecting innocent users in plain view.</p><p class="muted">Skills: graph construction, union-find clustering, feature design, risk scoring, threshold tuning, precision and recall, force-directed layout on canvas.</p></div></div></section>
+
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn" href="https://github.com/DevaharishSrikannan/DevaharishSrikannan.github.io/blob/main/assets/js/labs/fraud.js">View the source <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/labs/fraud.js"></script>
+</body>
+</html>

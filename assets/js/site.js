@@ -33,7 +33,7 @@
   const fb = document.querySelectorAll(".filters button");
   fb.forEach(b => b.addEventListener("click", () => {
     fb.forEach(x => x.setAttribute("aria-pressed", x === b));
-    const f = b.dataset.f;
+    const f = b.dataset.f; document.querySelector(".cards.all")?.classList.toggle("filtered", f !== "all");
     document.querySelectorAll(".cards .card").forEach(c => { c.hidden = f !== "all" && !c.dataset.cat.split(" ").includes(f); });
   }));
 

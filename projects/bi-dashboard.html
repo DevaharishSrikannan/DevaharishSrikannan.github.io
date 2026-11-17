@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Health Access BI Dashboard</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Power BI-style dashboard on 11,413 real urban centres">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Health Access BI Dashboard">
+<meta property="og:description" content="Power BI-style dashboard on 11,413 real urban centres">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/bi-dashboard.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / Health Access BI Dashboard</span>
+  <div class="row"><span class="chip live">Live demo</span><span class="chip">Business intelligence</span><span class="chip">Dashboard design</span><span class="chip">Data viz</span></div>
+  <h1>Health Access BI Dashboard</h1>
+  <p class="lead">Power BI-style dashboard on 11,413 real urban centres. KPI cards and measures over the real urban health dataset, with region, income and city-size slicers and a drill-down table.</p>
+  <div class="row"><a class="btn" href="https://github.com/DevaharishSrikannan/DevaharishSrikannan.github.io/blob/main/assets/js/labs/bi.js">View the source <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi "><b>11,413</b><span>real urban centres</span></div><div class="kpi "><b>5</b><span>KPI measures</span></div><div class="kpi "><b>3</b><span>slicers plus cross-filtering</span></div><div class="kpi "><b>2-level</b><span>drill-down: country to city</span></div></div>
+</section>
+<section class="block" style="padding-top:16px"><div class="wrap"><div class="console" id="bi-lab" data-src="../labs/centres.json"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span>bi_dashboard · urban health access, real data</span><span class="chip live">Explore</span></div><div class="inner">
+    <div class="controls">
+      <div class="control"><label for="bi-reg">Region</label><select id="bi-reg"><option value="all">All regions</option></select></div>
+      <div class="control"><label for="bi-size">City size</label><select id="bi-size"><option value="all">All sizes</option><option value="1">Smallest fifth</option><option value="2">Second fifth</option><option value="3">Middle fifth</option><option value="4">Fourth fifth</option><option value="5">Largest fifth</option></select></div>
+      <div class="control"><span class="lbl">Income group</span><div class="seg"><button data-inc="0">Low</button><button data-inc="1">Lower mid</button><button data-inc="2">Upper mid</button><button data-inc="3">High</button></div></div>
+      <div class="control"><span class="lbl">Filters</span><button class="btn" id="bi-clear">Clear all</button></div>
+    </div>
+    <div class="readout"><div><b id="bi-n" style="color:var(--scan)">-</b><span>Urban centres</span></div><div><b id="bi-pop">-</b><span>Population</span></div><div><b id="bi-rec" style="color:var(--amber)">-</b><span>With a recorded hospital</span></div><div><b id="bi-medh">-</b><span>Median hospitals per 100k (where recorded)</span></div><div><b id="bi-medp">-</b><span>Median pharmacies per 100k (where recorded)</span></div></div>
+    <div class="two"><div><p class="lbl mono muted" style="font-size:.78rem">HOSPITAL RECORDED, BY INCOME GROUP · select a bar to filter</p><div class="chartbox" id="bi-income"></div></div>
+    <div><p class="lbl mono muted" style="font-size:.78rem">HOSPITAL RECORDED, BY REGION · select a bar to filter</p><div class="chartbox" id="bi-region"></div></div></div>
+    <div><p class="lbl mono muted" style="font-size:.78rem">RECORDED HOSPITALS PER 100,000 PEOPLE</p><div class="chartbox" id="bi-hist"></div></div>
+    <div class="row" style="justify-content:space-between;align-items:center"><span class="mono muted" id="bi-crumb" style="font-size:.82rem"></span><div style="width:min(100%,260px)"><label for="bi-search" class="lbl mono muted" style="font-size:.74rem">SEARCH</label><input id="bi-search" type="search" placeholder="Country or city"></div></div>
+    <div class="tbl"><table id="bi-table"><thead><tr id="bi-th"></tr></thead><tbody></tbody></table></div>
+    <p class="note">A blank count means no facility was recorded in the source, not that none exists. Recording is far more complete in richer countries.</p></div></div></div></section>
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">What it shows</span><h2>BI design, not just charts</h2><p>The layout follows how a Power BI report is built: slicers at the top, KPI cards, visuals that cross-filter each other, and a table that drills down from country to city.</p><p>The measures, written in DAX terms:</p><ul><li><span class="mono">Centres = COUNTROWS(centres)</span></li><li><span class="mono">Hospital recorded % = AVERAGE(centres[has_hos])</span></li><li><span class="mono">Median hospitals = MEDIANX(FILTER(centres, centres[has_hos] = 1), centres[hos_per100k])</span></li></ul></div><div class="prose reveal"><span class="eyebrow">Data</span><h2>Real, with its caveats on screen</h2><p>The data is the cleaned output of my urban health access project: 11,413 urban centres with population, income group, region and recorded facilities. The dashboard keeps the project's key caveat visible: missing records are not zeros.</p><p class="muted">Skills: BI report design, measures, cross-filtering, drill-down, data storytelling.</p></div></div></section>
+
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn" href="https://github.com/DevaharishSrikannan/DevaharishSrikannan.github.io/blob/main/assets/js/labs/bi.js">View the source <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/labs/bi.js"></script>
+</body>
+</html>
