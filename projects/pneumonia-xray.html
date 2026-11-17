@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pneumonia from Chest X-rays</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="ResNet-50 transfer learning with a patient-level split">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pneumonia from Chest X-rays">
+<meta property="og:description" content="ResNet-50 transfer learning with a patient-level split">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/pneumonia-xray.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / Pneumonia from Chest X-rays</span>
+  <div class="row"><span class="chip">PyTorch</span><span class="chip">ResNet-50</span><span class="chip">Grad-CAM</span></div>
+  <h1>Pneumonia from Chest X-rays</h1>
+  <p class="lead">ResNet-50 transfer learning with a patient-level split. Rebuilds the public split by patient before training, then reports AUROC, sensitivity and specificity with patient-level intervals.</p>
+  <div class="row"><a class="btn" href="https://github.com/DevaharishSrikannan/pneumonia-chest-xray-pytorch">Code on GitHub <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi "><b>ResNet-50</b><span>ImageNet-pretrained backbone</span></div><div class="kpi good"><b>Patient-level</b><span>split rebuilt so no child spans splits</span></div><div class="kpi "><b>Grad-CAM</b><span>checks where the model looks</span></div><div class="kpi "><b>Pending</b><span>GPU training run</span></div></div>
+</section>
+<section class="block" style="padding-top:16px"><div class="wrap"><div class="console" id="xray-demo" data-model="../models/pneumonia.onnx">
+  <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span>xray_classifier · ONNX model running in your browser</span><span class="chip">AI demo</span></div>
+  <div class="inner">
+    <div class="status" id="xr-status" hidden><span>⏳</span><span>The model is being trained on a GPU. Once the trained weights are exported, this panel classifies a chest X-ray you choose, entirely in your browser, with no upload to any server.</span></div>
+    <div class="drop" id="xr-drop" tabindex="0" role="button" aria-label="Choose a chest X-ray image"><input type="file" accept="image/*" hidden><span>Choose a chest X-ray image</span></div>
+    <p id="xr-result" class="lead"></p>
+    <p class="note">Research demo trained on paediatric images from one centre. It is not a medical device and must not be used for diagnosis.</p>
+  </div></div></div></section>
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">Question</span><h2>Does the model learn lungs or shortcuts?</h2><p>The widely used Kermany chest X-ray dataset has several images per child, and its official folders are not guaranteed to be patient-disjoint. So before training, the notebook counts patients and byte-identical images shared across splits, rebuilds the split by patient and asserts that no patient appears twice.</p><ul><li>Two-stage fine-tuning with class weighting, mixed precision and early stopping on validation AUROC.</li><li>Threshold chosen on validation only, then test AUROC, sensitivity and specificity with patient-level bootstrap intervals.</li><li>Grad-CAM on correct and incorrect cases.</li></ul></div><div class="prose reveal"><span class="eyebrow">Status</span><h2>Code complete, training pending</h2><p>The data handling is unit-tested (12 checks on parsing, leakage detection, splits and metrics). Results will be added from the notebook's own output, whatever they turn out to be.</p><p><a href="https://colab.research.google.com/github/DevaharishSrikannan/pneumonia-chest-xray-pytorch/blob/main/notebooks/pneumonia_resnet50_pytorch.ipynb">Open the notebook in Colab →</a></p></div></div></section>
+
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn" href="https://github.com/DevaharishSrikannan/pneumonia-chest-xray-pytorch">Code on GitHub <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/demos.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projects</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Seven health data and AI projects with live in-browser demos.">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projects">
+<meta property="og:description" content="Seven health data and AI projects with live in-browser demos.">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="index.html">Home</a></li><li><a class="link" href="about.html">About</a></li><li><a class="link" href="projects.html" aria-current="page">Projects</a></li><li><a class="link" href="publications.html">Publications</a></li><li><a class="link" href="contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="eyebrow">Projects</span>
+  <h1>Work you can open, run and check</h1>
+  <p class="lead">Seven projects in health data science, medical imaging and machine learning. Four have live demos that run in your browser; all have code on GitHub.</p>
+</section>
+<section class="block" style="padding-top:8px"><div class="wrap">
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button data-f="all" aria-pressed="true">All</button><button data-f="live" aria-pressed="false">Live demos</button><button data-f="health" aria-pressed="false">Health data</button><button data-f="imaging" aria-pressed="false">Medical imaging</button><button data-f="ml" aria-pressed="false">Machine learning</button>
+  </div>
+  <div class="cards all"><a class="card reveal" href="projects/stomach-survival.html" data-cat="health ml live">
+  <div class="thumb"><img src="assets/img/stad-km.jpg" alt="Figure from Stomach Cancer Survival" loading="lazy"></div>
+  <div class="body"><div class="row"><span class="chip live">Live demo</span></div><h3>Stomach Cancer Survival</h3><p>Kaplan-Meier, log-rank and a multivariable Cox model written from scratch and verified on simulated data, on 443 patients.</p><p class="finding">Stage IV HR 5.2 · recurrence not predictable (AUC about 0.5)</p><div class="row tags"><span class="chip">Python</span><span class="chip">Survival analysis</span><span class="chip">Cox</span></div></div>
+</a><a class="card reveal" href="projects/mri-leakage.html" data-cat="imaging ml live">
+  <div class="thumb"><img src="assets/img/mri-leakage.jpg" alt="Figure from Brain MRI Leakage Audit" loading="lazy"></div>
+  <div class="body"><div class="row"><span class="chip live">Live demo</span></div><h3>Brain MRI Leakage Audit</h3><p>Classical features with SVM, Random Forest and Logistic Regression on 3,264 MRIs, plus an audit of the public train/test split.</p><p class="finding">66% of the official test set had a twin in training</p><div class="row tags"><span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">OpenCV</span></div></div>
+</a><a class="card reveal" href="projects/urban-health.html" data-cat="health live">
+  <div class="thumb"><img src="assets/img/urban-recorded.jpg" alt="Figure from Urban Health Access" loading="lazy"></div>
+  <div class="body"><div class="row"><span class="chip live">Live demo</span></div><h3>Urban Health Access</h3><p>SQL preparation, nonparametric tests with effect sizes, logistic regression with bootstrap intervals and an interactive dashboard.</p><p class="finding">Hospital recorded in 88% of high-income vs 36% of low-income centres</p><div class="row tags"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Statistics</span></div></div>
+</a><a class="card reveal" href="projects/health-financing.html" data-cat="health live">
+  <div class="thumb"><img src="assets/img/ghf-oop.jpg" alt="Figure from Who Pays for Health Care?" loading="lazy"></div>
+  <div class="body"><div class="row"><span class="chip live">Live demo</span></div><h3>Who Pays for Health Care?</h3><p>SQL-first pipeline over WHO and World Bank data with bootstrap intervals, clustering and an Ireland vs EU27 view.</p><p class="finding">Out-of-pocket share falls as compulsory financing rises (rho -0.84)</p><div class="row tags"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Bootstrap</span></div></div>
+</a><a class="card reveal" href="projects/pneumonia-xray.html" data-cat="imaging ml">
+  <div class="thumb"><div class="gen">PYTORCH · RESNET-50</div></div>
+  <div class="body"><div class="row"></div><h3>Pneumonia from Chest X-rays</h3><p>Rebuilds the public split by patient before training, then reports AUROC, sensitivity and specificity with patient-level intervals.</p><p class="finding">Patient-disjoint split, Grad-CAM checks, bootstrap CIs</p><div class="row tags"><span class="chip">PyTorch</span><span class="chip">ResNet-50</span><span class="chip">Grad-CAM</span></div></div>
+</a><a class="card reveal" href="projects/knee-oa.html" data-cat="imaging ml">
+  <div class="thumb"><div class="gen">PYTORCH · ORDINAL METRICS</div></div>
+  <div class="body"><div class="row"></div><h3>Knee Osteoarthritis Grading</h3><p>Fine-tunes ResNet-50 and tests whether GLCM texture features add anything on top of CNN embeddings.</p><p class="finding">CNN vs texture features vs fused, scored by weighted kappa</p><div class="row tags"><span class="chip">PyTorch</span><span class="chip">Ordinal metrics</span><span class="chip">Radiomics</span></div></div>
+</a><a class="card reveal" href="projects/gene-expression.html" data-cat="health">
+  <div class="thumb"><div class="gen">R · DESEQ2</div></div>
+  <div class="body"><div class="row"></div><h3>ERBB2 Breast Cancer Expression</h3><p>Compares ERBB2-amplified with non-amplified breast tumours using RNA-seq, copy-number and clinical data.</p><p class="finding">DESeq2, pathway enrichment and penalised Cox in R</p><div class="row tags"><span class="chip">R</span><span class="chip">DESeq2</span><span class="chip">clusterProfiler</span></div></div>
+</a></div>
+</div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="assets/js/site.js"></script>
+
+</body>
+</html>

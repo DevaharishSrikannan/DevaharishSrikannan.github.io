@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Who Pays for Health Care?</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Financing patterns in 195 countries, 2000 to 2023">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Who Pays for Health Care?">
+<meta property="og:description" content="Financing patterns in 195 countries, 2000 to 2023">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/health-financing.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/assets/img/ghf-oop.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / Who Pays for Health Care?</span>
+  <div class="row"><span class="chip live">Live demo</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Bootstrap</span><span class="chip">Dashboard</span></div>
+  <h1>Who Pays for Health Care?</h1>
+  <p class="lead">Financing patterns in 195 countries, 2000 to 2023. SQL-first pipeline over WHO and World Bank data with bootstrap intervals, clustering and an Ireland vs EU27 view.</p>
+  <div class="row"><a class="btn primary" href="../health-financing/">Open full dashboard <span class="arr">→</span></a><a class="btn" href="https://github.com/DevaharishSrikannan/global-health-financing">Code on GitHub <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi "><b>195</b><span>countries, 2000 to 2023</span></div><div class="kpi "><b>-0.84</b><span>OOP share vs compulsory financing</span></div><div class="kpi "><b>+10.5%</b><span>median spend 2021 vs 2019</span></div><div class="kpi bad"><b>56</b><span>countries paying 40%+ out of pocket</span></div></div>
+</section>
+
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">Question</span><h2>Who pays for health care?</h2><p>How does the financing mix differ by spending level, what changed after the pandemic, and how strongly is spending linked to life expectancy?</p><ul><li>Out-of-pocket share falls as compulsory financing rises (Spearman rho -0.84, bootstrap CI -0.89 to -0.77).</li><li>56 of 191 countries still paid 40% or more out of pocket in 2023.</li><li>Countries split into a mostly compulsory group and a mostly out-of-pocket group, with high bootstrap stability.</li><li>Ireland: second highest spend per person in the EU27, with a lower out-of-pocket share than the EU median.</li></ul></div><div class="prose reveal"><span class="eyebrow">Live dashboard</span><h2>Explore every country</h2><p>The interactive dashboard shows each country's financing mix over time and where it sits against its spending tier.</p><p><a class="btn primary" href="../health-financing/">Open the dashboard →</a></p><p class="muted">Built as a SQL-first pipeline with conditional-aggregation pivots and window functions, data validation tests, nonparametric statistics with bootstrap intervals, regression and k-means with stability checks.</p></div></div></section>
+<section class="block" style="padding-top:0"><div class="wrap"><div class="head"><span class="eyebrow">Figures</span><h2>From the analysis</h2><p>Select a figure to enlarge it.</p></div><div class="gallery"><figure><img src="../assets/img/ghf-oop.jpg" alt="Out-of-pocket share by spending tier" loading="lazy"><figcaption>Out-of-pocket share by spending tier</figcaption></figure><figure><img src="../assets/img/ghf-profiles.jpg" alt="Financing profiles from clustering" loading="lazy"><figcaption>Financing profiles from clustering</figcaption></figure><figure><img src="../assets/img/ghf-life.jpg" alt="Life expectancy vs spending per person" loading="lazy"><figcaption>Life expectancy vs spending per person</figcaption></figure><figure><img src="../assets/img/ghf-pandemic.jpg" alt="Change in spending since 2019" loading="lazy"><figcaption>Change in spending since 2019</figcaption></figure></div></div></section>
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn primary" href="../health-financing/">Open full dashboard <span class="arr">→</span></a><a class="btn" href="https://github.com/DevaharishSrikannan/global-health-financing">Code on GitHub <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+
+</body>
+</html>

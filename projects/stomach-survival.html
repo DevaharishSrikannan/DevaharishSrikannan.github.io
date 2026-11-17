@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stomach Cancer Survival</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="TCGA-STAD clinical-genomic survival and recurrence analysis">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Stomach Cancer Survival">
+<meta property="og:description" content="TCGA-STAD clinical-genomic survival and recurrence analysis">
+<meta property="og:url" content="https://devaharishsrikannan.github.io/projects/stomach-survival.html">
+<meta property="og:image" content="https://devaharishsrikannan.github.io/assets/img/stad-km.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html" aria-label="Devaharish Srikannan, home"><span class="mark">DS</span><span>Devaharish Srikannan</span></a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Main"><ul id="menu"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../about.html">About</a></li><li><a class="link" href="../projects.html" aria-current="page">Projects</a></li><li><a class="link" href="../publications.html">Publications</a></li><li><a class="link" href="../contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main">
+
+<section class="case-hero wrap">
+  <span class="crumbs"><a href="../projects.html">Projects</a> / Stomach Cancer Survival</span>
+  <div class="row"><span class="chip live">Live demo</span><span class="chip">Python</span><span class="chip">Survival analysis</span><span class="chip">Cox</span><span class="chip">TCGA</span></div>
+  <h1>Stomach Cancer Survival</h1>
+  <p class="lead">TCGA-STAD clinical-genomic survival and recurrence analysis. Kaplan-Meier, log-rank and a multivariable Cox model written from scratch and verified on simulated data, on 443 patients.</p>
+  <div class="row"><a class="btn" href="https://github.com/DevaharishSrikannan/stomach-adenocarcinoma-survival">Code on GitHub <span class="arr">→</span></a></div>
+  <div class="kpis"><div class="kpi "><b>443</b><span>patients in TCGA-STAD</span></div><div class="kpi bad"><b>5.2x</b><span>stage IV hazard vs stage I</span></div><div class="kpi "><b>0.63</b><span>best cross-validated C-index</span></div><div class="kpi bad"><b>~0.5</b><span>recurrence AUC: not predictable</span></div></div>
+</section>
+<section class="block" style="padding-top:16px"><div class="wrap"><div class="console" id="survival-demo">
+  <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span>survival_explorer · multivariable Cox model, n = 392, 156 deaths</span><span class="chip live">Interactive</span></div>
+  <div class="inner">
+    <p class="muted">Pick a patient profile. The relative hazard is computed from the fitted Cox hazard ratios, against a reference patient: stage I, age 65, male, cohort reference mutation count.</p>
+    <div class="controls">
+      <div class="control"><span class="lbl">Stage</span><div class="seg"><button data-stage="I">I</button><button data-stage="II">II</button><button data-stage="III">III</button><button data-stage="IV">IV</button></div></div>
+      <div class="control"><label for="sv-age">Age <output id="sv-age-o"></output></label><input id="sv-age" type="range" min="35" max="90" step="1" value="65"></div>
+      <div class="control"><span class="lbl">Sex</span><div class="seg"><button data-sex="M">Male</button><button data-sex="F">Female</button></div></div>
+      <div class="control"><label for="sv-mut">Tumour mutation count <output id="sv-mut-o"></output></label><input id="sv-mut" type="range" min="-2" max="3" step="1" value="0"></div>
+    </div>
+    <div class="readout"><div><b id="sv-hr">-</b><span>Relative hazard vs reference</span></div><div><b id="sv-med" style="color:var(--amber)">-</b><span>Median overall survival for this stage</span></div><div><b id="sv-n" style="font-size:1rem;line-height:1.3">-</b><span>In the cohort at this stage</span></div></div>
+    <div class="two"><div class="chartbox" id="sv-bars"></div><div class="chartbox" id="sv-forest"></div></div>
+    <p class="note">Exploratory research model on one public cohort. Hazard ratios describe associations, not causes, and this is not a clinical tool.</p>
+  </div></div></div></section>
+<section class="block"><div class="wrap two"><div class="prose reveal"><span class="eyebrow">Question</span><h2>What predicts survival in stomach cancer?</h2><p>Which factors are associated with overall survival in the TCGA stomach adenocarcinoma cohort, does a tumour's genomic burden add anything beyond stage, and can recurrence be predicted from routine variables?</p><ul><li>Stage separates survival clearly: median 72, 55, 25 and 13 months for stages I to IV (log-rank p = 5.6e-6).</li><li>Age adds risk: HR 1.44 per 10 years. Sex shows no association.</li><li>Higher mutation count was associated with longer survival: HR 0.89 per doubling.</li><li>Recurrence could not be predicted: cross-validated AUC 0.47 to 0.51. I report that as a negative result.</li></ul></div><div class="prose reveal"><span class="eyebrow">Method</span><h2>Statistics written from scratch, then tested</h2><p>Kaplan-Meier, the log-rank test, Cox regression with Breslow ties and Harrell's C-index are implemented in numpy and scipy. Self-tests check them against known values, a permutation test and simulated data where the Cox model recovers the true hazard ratios with 96% interval coverage.</p><p>Model comparison uses 5-fold cross-validation repeated 20 times with identical folds: stage only 0.604, plus age and sex 0.621, plus genomic summaries 0.630.</p></div></div></section>
+<section class="block" style="padding-top:0"><div class="wrap"><div class="head"><span class="eyebrow">Figures</span><h2>From the analysis</h2><p>Select a figure to enlarge it.</p></div><div class="gallery"><figure><img src="../assets/img/stad-km.jpg" alt="Kaplan-Meier curves by stage" loading="lazy"><figcaption>Kaplan-Meier curves by stage</figcaption></figure><figure><img src="../assets/img/stad-forest.jpg" alt="Cox model hazard ratios with 95% confidence intervals" loading="lazy"><figcaption>Cox model hazard ratios with 95% confidence intervals</figcaption></figure><figure><img src="../assets/img/stad-models.jpg" alt="Cross-validated C-index by model" loading="lazy"><figcaption>Cross-validated C-index by model</figcaption></figure></div></div></section>
+<section class="block" style="padding-top:0"><div class="wrap"><div class="row"><a class="btn" href="../projects.html">← All projects</a><a class="btn" href="https://github.com/DevaharishSrikannan/stomach-adenocarcinoma-survival">Code on GitHub <span class="arr">→</span></a></div></div></section>
+
+</main>
+<footer><div class="wrap">
+  <span>Devaharish Srikannan · Dublin, Ireland</span>
+  <span class="row"><a href="https://www.linkedin.com/in/devaharish-srikannan-a624001ab/">LinkedIn</a><a href="https://github.com/DevaharishSrikannan/">GitHub</a><a href="../assets/Devaharish_Srikannan_CV.pdf">CV (PDF)</a></span>
+</div></footer>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/demos.js"></script>
+</body>
+</html>
